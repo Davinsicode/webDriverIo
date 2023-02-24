@@ -3,8 +3,9 @@
 // Click the create button check whether the package is created.
 
 describe('Create New Package', () => {
-    let number = Math.round(Math.random())+1
-    let PackageName = "Beach View Party"+number
+    let number = Math.random()
+    // let PackageName = "Beach View Party"+number
+    let PackageName = "Beach View Party0.11405997797652101"
     it('Navigate to the Application', async () =>
     {
         await browser.maximizeWindow() // --> To maximize the window
@@ -30,7 +31,7 @@ describe('Create New Package', () => {
         await console.log("Title of the page is: "+adminTitle);
         await expect(browser).toHaveTitleContaining("TMS | Admin Dashboard")
     })
-   /*  it('Create Package', async () =>
+    it('Create Package', async () =>
     {
         await $('//span[.=" Tour Packages"]').moveTo({}) // --> to perform the mouse hover action
         await $('//a[.="Create"]').click()
@@ -46,10 +47,10 @@ describe('Create New Package', () => {
         await $('//input[@ id="packagefeatures"]').setValue("Foods with Bevarages FREE...!!!")
         await $('//button[.="Create"]').scrollIntoView() // --> To perform the scroll down
         await $('//textarea[@ id="packagedetails"]').setValue("Only four members will allowed for one package")
-        await $('//input[@ id="packageimage"]').setValue("C:/Users/Admin/Pictures/wolf.jpg")
-        await $('//button[.="Create"]').click()
+        await $('//input[@ id="packageimage"]').setValue("C:/Users/Admin/Documents/webDriver.io/wolf.jpg")
+       await $('//button[.="Create"]').click()
         
-    }) */
+    })
     it('Package Created Verification', async () =>
     {
         await $('//span[.=" Tour Packages"]').moveTo({})
