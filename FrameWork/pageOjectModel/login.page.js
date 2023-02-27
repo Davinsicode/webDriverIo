@@ -21,6 +21,23 @@ class loginPagePaths
     {
         return $('[name="login"]')
     }
+    get usersignInLink()
+    {
+        return $('//a[.="/ Sign In"]')
+    }
+    get userName()
+    {
+        return $('//input[@ placeholder="Enter your Email"]')
+    }
+    get userPassword()
+    {
+        return $('(//input[@ placeholder="Password"])[2]')
+    }
+    get userSignInButton()
+    {
+        return $('//input[@ name="signin"]')
+    }
+    
     async adminLogin()
     {   
         await this.adminLoginLink.click()
@@ -33,6 +50,19 @@ class loginPagePaths
         let adminTitle = await browser.getTitle()
         await console.log("Title of the page is: "+adminTitle);
         await expect(browser).toHaveTitleContaining("TMS | Admin Dashboard")
+    }
+
+    async userLogin()
+    {
+        await this.usersignInLink.waitForDisplayed()
+        await this.usersignInLink.click()
+        await this.userName.setValue()
+        await this.userPassword.setValue()
+        await this.userSignInButton.click()
+
+        let userLoginTitle = await browser.getTitle()
+        await console.log("Title of the page is: "+userLoginTitle);
+        await expect(browser).toHaveTitleContaining("TMS | Package List")
     }
        
 }

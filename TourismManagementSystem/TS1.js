@@ -1,6 +1,6 @@
 // Login as admin click the create package, 
-// Enter the valid details on all fields, 
-// Click the create button check whether the package is created.
+// Enter the valid details on all fields click the create package, 
+// Click the manage button check whether the package is created.
 
 describe('Create New Package', () => {
     let number = Math.random()

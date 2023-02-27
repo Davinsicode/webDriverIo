@@ -3,8 +3,12 @@ describe('Find Elements',()=>{
         await browser.maximizeWindow()
         await browser.url("file:///C:/Users/Admin/Documents/samplePage.html")
         let links = await browser.$$('//a')
-        links.forEach((ref)=>{ console.log(ref.getText()); })
-        await browser.debug()
+        console.log("*****************************************"+links.length);
+        // links.forEach(async (ref)=>{ console.log(await ref.getText().then((value)=>value)); }) //--------------> forEachLoop Method
+        
+        links.map(async (msg)=> console.log("---->"+await msg.getText().then((value)=>value ))) //--------------> map Method
+        await browser.pause(10000)
+        
     })
 })
 
