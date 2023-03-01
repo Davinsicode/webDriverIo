@@ -106,6 +106,7 @@ describe('Confirm the Ticket Booking', () => {
         let logoutTitle2 = await browser.getTitle() //-->Assertion
         await console.log("Title of the page is: "+logoutTitle2);
         await expect(browser).toHaveTitleContaining("TMS | Tourism Management System")
+        
     })
     
     

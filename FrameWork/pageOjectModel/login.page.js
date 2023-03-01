@@ -40,6 +40,7 @@ class loginPagePaths
     
     async adminLogin()
     {   
+        await this.adminLoginLink.waitForDisplayed()
         await this.adminLoginLink.click()
         let loginTitle = await browser.getTitle()
         await console.log("Title of the page is: "+loginTitle);
@@ -56,15 +57,14 @@ class loginPagePaths
     {
         await this.usersignInLink.waitForDisplayed()
         await this.usersignInLink.click()
-        await this.userName.setValue()
-        await this.userPassword.setValue()
+        await this.userName.setValue('suresh@gmail.com')
+        await this.userPassword.setValue('12345')
         await this.userSignInButton.click()
 
         let userLoginTitle = await browser.getTitle()
-        await console.log("Title of the page is: "+userLoginTitle);
-        await expect(browser).toHaveTitleContaining("TMS | Package List")
+        console.log("Title of the page is: "+userLoginTitle);
+        expect(browser).toHaveTitleContaining("TMS | Package List")
     }
-       
 }
 export default new loginPagePaths()
 // console.log(new loginPagePaths().url); 
