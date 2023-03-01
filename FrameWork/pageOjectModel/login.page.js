@@ -9,11 +9,11 @@ class loginPagePaths
     {
         return $('//a[.="Admin Login"]')
     }
-    get adminName()
+    get adminName_txt()
     {
         return $('[name="username"]')
     }
-    get adminPassword()
+    get adminPassword_txt()
     {
     return $('[name="password"]')
     }
@@ -25,11 +25,11 @@ class loginPagePaths
     {
         return $('//a[.="/ Sign In"]')
     }
-    get userName()
+    get userName_txt()
     {
         return $('//input[@ placeholder="Enter your Email"]')
     }
-    get userPassword()
+    get userPassword_txt()
     {
         return $('(//input[@ placeholder="Password"])[2]')
     }
@@ -45,8 +45,8 @@ class loginPagePaths
         let loginTitle = await browser.getTitle()
         await console.log("Title of the page is: "+loginTitle);
         await expect(browser).toHaveTitleContaining("TMS | Admin Sign in")
-        await this.adminName.setValue(pathPage.allPaths.adminUsername)
-        await this.adminPassword.setValue(pathPage.allPaths.adminPassword)
+        await this.adminName_txt.setValue(pathPage.allPaths.adminUsername)
+        await this.adminPassword_txt.setValue(pathPage.allPaths.adminPassword)
         await this.loginButton.click()
         let adminTitle = await browser.getTitle()
         await console.log("Title of the page is: "+adminTitle);
@@ -57,8 +57,8 @@ class loginPagePaths
     {
         await this.usersignInLink.waitForDisplayed()
         await this.usersignInLink.click()
-        await this.userName.setValue('suresh@gmail.com')
-        await this.userPassword.setValue('12345')
+        await this.userName_txt.setValue('suresh@gmail.com')
+        await this.userPassword_txt.setValue('12345')
         await this.userSignInButton.click()
 
         let userLoginTitle = await browser.getTitle()

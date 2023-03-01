@@ -1,6 +1,6 @@
 class packageList
 {
-    get packageName()
+    get packageNameText()
     {
         return $(`//h4[.='Package Name: Kerla']`)
     }
@@ -8,15 +8,15 @@ class packageList
     {
         return $(`//h4[.='Package Name: Kerla']/../following-sibling::div/a`)
     }
-    get safeSecure_txt()
+    get safeSecureText()
     {
         return $(`//div[.='SAFE & SECURE ']`)
     }
-    get datePicker1()
+    get datePicker1_txt()
     {
         return $(`//input[@ id="datepicker"]`)
     }
-    get datePicker2()
+    get datePicker2_txt()
     {
         return $(`//input[@ id="datepicker1"]`)
     }
@@ -32,11 +32,11 @@ class packageList
     {
         return $(`//a[@ title="Next"]`)
     }
-    get commentLabel()
+    get commentLabelText()
     {
         return $(`//label[.='Comment']`)
     }
-    get commentBox()
+    get commentBox_txt()
     {
         return $(`//label[.='Comment']/following-sibling::input`)
     }
@@ -51,19 +51,19 @@ class packageList
     
     async selectPackage()
     {
-        await this.packageName.scrollIntoView()
-        await this.packageName.waitForDisplayed()
+        await this.packageNameText.scrollIntoView()
+        await this.packageNameText.waitForDisplayed()
         await this.clickPackage.click()
         console.log("Pack clicked successfully");
     }
         
     async bookTicket()
     {
-        await this.safeSecure_txt.waitForDisplayed()
+        await this.safeSecureText.waitForDisplayed()
         await browser.scroll(300,300)
-        await this.datePicker1.click()
+        await this.datePicker1_txt.click()
         await this.fromDate.click()
-        await this.datePicker2.click()
+        await this.datePicker2_txt.click()
 
         try 
         {
@@ -74,10 +74,10 @@ class packageList
             await this.tooDate.click
         }
         await browser.pause(3000)
-        await browser.waitUntil(async ()=>this.commentLabel)
-        this.commentLabel.scrollIntoView()
-        await this.commentBox.waitForDisplayed()
-        await this.commentBox.setValue("I need to be book ticket on March 8 please confirm my ticket")
+        await browser.waitUntil(async ()=>this.commentLabelText)
+        this.commentLabelText.scrollIntoView()
+        await this.commentBox_txt.waitForDisplayed()
+        await this.commentBox_txt.setValue("I need to be book ticket on March 8 please confirm my ticket")
         await this.submitButton.waitForClickable()
         await this.submitButton.click()
         await this.notificationText.waitForDisplayed()

@@ -1,6 +1,6 @@
 class logout
 {
-    get arrowDown()
+    get downArrow()
     {
         return $('//i[@ class="fa fa-angle-down"]')
     }
@@ -19,7 +19,7 @@ class logout
 
     async adminLogout()
     {
-        await this.arrowDown.click()
+        await this.downArrow.click()
         await this.adminLogoutLink.waitForDisplayed()
         await this.adminLogoutLink.click()
 

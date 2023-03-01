@@ -4,19 +4,19 @@ class signUp
     {
         return $('//a[.="Sign Up"]')
     }
-    get fullName()
+    get fullName_txt()
     {
         return $('[name = "fname"]')
     }
-    get mobileNumber()
+    get mobileNumber_txt()
     {
         return $('[name = "mobilenumber"]')
     }
-    get email()
+    get email_txt()
     {
         return $('[name = "email"]')
     }
-    get password()
+    get password_txt()
     {
         return $('[name = "password"]')
     }
@@ -28,10 +28,10 @@ class signUp
     async createNewUser(userName, mail)
     {
     await this.signUpLink.click();
-    await this.fullName.setValue(userName);
-    await this.mobileNumber.setValue("9638527410");
-    await this.email.setValue(mail);
-    await this.password.setValue("12345");
+    await this.fullName_txt.setValue(userName);
+    await this.mobileNumber_txt.setValue("9638527410");
+    await this.email_txt.setValue(mail);
+    await this.password_txt.setValue("12345");
     await this.submitButton.waitForClickable()
     await this.submitButton.click();
 

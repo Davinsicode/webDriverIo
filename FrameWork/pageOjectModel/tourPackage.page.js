@@ -12,31 +12,31 @@ class pomClass
     {
         return $('//a[.="Manage"]')
     }
-    get packageName()
+    get packageName_txt()
     {
         return $('//input[@ placeholder="Create Package"]')
     }
-    get packageType()
+    get packageType_txt()
     {
         return $('//input[@ id="packagetype"]')
     }
-    get packageLocation()
+    get packageLocation_txt()
     {
         return $('//input[@ placeholder=" Package Location"]')
     }
-    get packagePrice()
+    get packagePrice_txt()
     {
         return $('//input[@ id="packageprice"]')
     }
-    get packageFeatures()
+    get packageFeatures_txt()
     {
         return $('//input[@ id="packagefeatures"]')
     }
-    get packageDetails()
+    get packageDetails_txt()
     {
         return $('//textarea[@ id="packagedetails"]')
     }
-    get packageImage()
+    get packageImageButton()
     {
         return $('//input[@ id="packageimage"]')
     }
@@ -53,14 +53,14 @@ class pomClass
         let createTitle = await browser.getTitle()
         await console.log("Title of the page is: "+createTitle);
         await expect(browser).toHaveTitleContaining("TMS | Admin Package Creation")
-        await this.packageName.setValue(PackageName)
-        await this.packageType.setValue("Friends")
-        await this.packageLocation.setValue("Uchilla Beach")
-        await this.packagePrice.setValue("30000")
-        await this.packageFeatures.setValue("Foods with Bevarages FREE...!!!")
+        await this.packageName_txt.setValue(PackageName)
+        await this.packageType_txt.setValue("Friends")
+        await this.packageLocation_txt.setValue("Uchilla Beach")
+        await this.packagePrice_txt.setValue("30000")
+        await this.packageFeatures_txt.setValue("Foods with Bevarages FREE...!!!")
         await this.packageCreateButton.scrollIntoView()
-        await this.packageDetails.setValue("Only four members will allowed for one package")
-        await this.packageImage.setValue("C:/Users/Admin/Documents/webDriver.io/wolf.jpg")
+        await this.packageDetails_txt.setValue("Only four members will allowed for one package")
+        await this.packageImageButton.setValue("C:/Users/Admin/Documents/webDriver.io/wolf.jpg")
         await this.packageCreateButton.click()
     }
     async managePackage()

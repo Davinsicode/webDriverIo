@@ -12,7 +12,7 @@ class manageBooking
     {
         return $(`//tbody/tr[last()]/td/following-sibling::td[@ data-th="Action "]/span/a[.='Confirm']`)
     }
-    get bookingConfirmationTxt()
+    get confirmationNotificationText()
     {
         return $(`//div[contains(.,':Booking Confirm successfully ')]/strong`)
     }
@@ -24,7 +24,7 @@ class manageBooking
         await this.confirmLink.click()
         // await browser.$(`//tbody/tr[position()=12]/td/following-sibling::td[@ data-th="Action "]/span/a[.='Confirm']`).click()
         await browser.acceptAlert()
-        await this.bookingConfirmationTxt.waitForDisplayed()
+        await this.confirmationNotificationText.waitForDisplayed()
         let title = await browser.getTitle()
         console.log("Title of the page is : "+title);
         expect(browser).toHaveTitleContaining("TMS | Admin manage Bookings")
