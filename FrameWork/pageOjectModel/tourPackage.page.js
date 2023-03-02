@@ -1,3 +1,5 @@
+import { expect } from "chai"
+
 class pomClass
 {
     get tourPackageButton()
@@ -51,8 +53,9 @@ class pomClass
         await this.tourPackageButton.moveTo({})
         await this.tourPackageCreateButton.click()
         let createTitle = await browser.getTitle()
-        await console.log("Title of the page is: "+createTitle);
-        await expect(browser).toHaveTitleContaining("TMS | Admin Package Creation")
+        console.log("Title of the page is: "+createTitle);
+        //expect(browser).toHaveTitleContaining("TMS | Admin Package Creation")
+        expect(createTitle).to.equal("TMS | Admin Package Creation")
         await this.packageName_txt.setValue(PackageName)
         await this.packageType_txt.setValue("Friends")
         await this.packageLocation_txt.setValue("Uchilla Beach")
@@ -68,9 +71,9 @@ class pomClass
         await this.tourPackageButton.moveTo({})
         await this.tourPackageManageButton.click()
         let updateTitle = await browser.getTitle()
-        await console.log("Title of the page is: "+updateTitle);
-        await expect(browser).toHaveTitleContaining("TMS | admin manage packages")
-        
+        console.log("Title of the page is: "+updateTitle);
+        //await expect(browser).toHaveTitleContaining("TMS | admin manage packages")
+        expect(updateTitle).to.equal("TMS | admin manage packages")
     }
 
     

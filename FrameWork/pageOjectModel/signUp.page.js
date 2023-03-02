@@ -1,3 +1,5 @@
+import { expect } from "chai"
+
 class signUp
 {
     get signUpLink()
@@ -27,17 +29,19 @@ class signUp
 
     async createNewUser(userName, mail)
     {
-    await this.signUpLink.click();
-    await this.fullName_txt.setValue(userName);
-    await this.mobileNumber_txt.setValue("9638527410");
-    await this.email_txt.setValue(mail);
-    await this.password_txt.setValue("12345");
-    await this.submitButton.waitForClickable()
-    await this.submitButton.click();
+        await this.signUpLink.waitForEnabled()
+        await this.signUpLink.click();
+        await this.fullName_txt.setValue(userName);
+        await this.mobileNumber_txt.setValue("9638527410");
+        await this.email_txt.setValue(mail);
+        await this.password_txt.setValue("12345");
+        await this.submitButton.waitForClickable()
+        await this.submitButton.click();
 
-    let conforamtionTitle = await browser.getTitle();
-    console.log("Title of the page is: "+conforamtionTitle);
-    expect(browser).toHaveTitleContaining("TMS | Confirmation ")
+    let conformationTitle = await browser.getTitle();
+    console.log("Title of the page is: "+conformationTitle);
+    //expect(browser).toHaveTitleContaining("TMS | Confirmation ")
+    expect(conformationTitle).to.equals("TMS | Confirmation")
     }
 }
 export default new signUp()

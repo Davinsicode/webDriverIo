@@ -1,3 +1,4 @@
+import { expect } from "chai"
 import { default as baseClassPage } from "../../../FrameWork/pageOjectModel/baseClass.page.js"
 import loginPage from "../../../FrameWork/pageOjectModel/login.page.js"
 import tourPackagePage from "../../../FrameWork/pageOjectModel/tourPackage.page.js"
@@ -11,7 +12,7 @@ describe('Create New Package', ()=>{
 
     it('Navigate to the Application', async ()=>{ await baseClassPage.openBrowser() })
 
-    /* it('Login as Admin', async ()=>{ await loginPage.adminLogin() })
+    it('Login as Admin', async ()=>{ await loginPage.adminLogin() })
 
     it('Create Package', async ()=>{ await tourPackagePage.createPackage(PackageName) })
 
@@ -23,7 +24,8 @@ describe('Create New Package', ()=>{
         await $('//tbody/tr/td[@ data-th="Name"]/span[.="'+PackageName+'"]').waitForDisplayed()
         let pckName = await $('//tbody/tr/td[@ data-th="Name"]/span[.="'+PackageName+'"]').getText()
         console.log("Created Package Name is: "+pckName);
-        await expect(pckName).toEqual(PackageName)
-        await console.log("TestCase Pass");
-    }) */
+        //expect(pckName).toEqual(PackageName)
+        expect(pckName).to.equal(PackageName)
+        console.log("TestCase Pass");
+    })
 })

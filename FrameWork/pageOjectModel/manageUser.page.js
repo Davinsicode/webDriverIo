@@ -1,3 +1,5 @@
+import { expect } from "chai";
+
 class manageUser
 {
     get manageUserButton()
@@ -13,7 +15,8 @@ class manageUser
         await this.manageUserButton.click()
         let manageUserTitle = await browser.getTitle() //-->Assertion
         console.log("Title of the page is: "+manageUserTitle);
-        expect(browser).toHaveTitleContaining("TMS | Admin manage Users")
+        // expect(browser).toHaveTitleContaining("TMS | Admin manage Users")
+        expect(manageUserTitle).to.equal("TMS | Admin manage Users")
 
         await this.userCount.scrollIntoView()
         await this.userCount.waitForDisplayed()
@@ -21,7 +24,8 @@ class manageUser
         let userCountValue = await this.userCount.getText()
         console.log("Total count of the Manage User is: "+userCountValue)
 
-        expect(value_1).toEqual(userCountValue)
+        // expect(value_1).toEqual(userCountValue)
+        expect(value_1).to.equal(userCountValue)
         console.log("Test case Pass")
     }
 }

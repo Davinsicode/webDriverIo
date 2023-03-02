@@ -1,3 +1,5 @@
+import { expect } from "chai"
+
 class packageList
 {
     get packageNameText()
@@ -73,7 +75,7 @@ class packageList
             await this.nextButton.click()
             await this.tooDate.click
         }
-        await browser.pause(3000)
+        //await browser.pause(3000)
         await browser.waitUntil(async ()=>this.commentLabelText)
         this.commentLabelText.scrollIntoView()
         await this.commentBox_txt.waitForDisplayed()
@@ -81,6 +83,8 @@ class packageList
         await this.submitButton.waitForClickable()
         await this.submitButton.click()
         await this.notificationText.waitForDisplayed()
+        let title = await browser.getTitle()
+        expect(title).to.equal("TMS | Package Details")
         
         
     }

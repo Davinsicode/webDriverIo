@@ -1,3 +1,5 @@
+import { expect } from "chai"
+
 class logout
 {
     get downArrow()
@@ -24,19 +26,23 @@ class logout
         await this.adminLogoutLink.click()
 
         let logoutTitle = await browser.getTitle()
-        await console.log("Title of the page is: "+logoutTitle)
-        await expect(browser).toHaveTitleContaining("TMS | Admin Sign in")
+        console.log("Title of the page is: "+logoutTitle)
+        //expect(browser).toHaveTitleContaining("TMS | Admin Sign in")
+        expect(logoutTitle).to.equal("TMS | Admin Sign in")
 
         await this.backToHomeLink.click()
 
         let logoutTitle2 = await browser.getTitle()
-        await console.log("Title of the page is: "+logoutTitle2)
-        await expect(browser).toHaveTitleContaining("TMS | Tourism Management System")
+        console.log("Title of the page is: "+logoutTitle2)
+        //expect(browser).toHaveTitleContaining("TMS | Tourism Management System")
+        expect(logoutTitle2).to.equal("TMS | Tourism Management System")
     }
 
     async userLogout()
     {
         await this.userLogoutLink.click()
+        let title = await browser.getTitle()
+        expect(title).to.equal("TMS | Tourism Management System")
     }
 }
 

@@ -1,3 +1,4 @@
+import { expect } from "chai"
 import randomNumber from "../../../FrameWork/genericUtilities/randomNumber.js"
 import { default as baseClassPage } from "../../../FrameWork/pageOjectModel/baseClass.page.js"
 import loginPage from "../../../FrameWork/pageOjectModel/login.page.js"
@@ -37,7 +38,8 @@ describe('Verify the admin created package is displayed in customer page', ()=>{
         await browser.$('//div/h4[.="Package Name: '+PackageName+'"]').scrollIntoView()
         await browser.$('//div/h4[.="Package Name: '+PackageName+'"]').waitForDisplayed()
         let pckName = await browser.$('//div/h4[.="Package Name: '+PackageName+'"]').getText()
-        expect(pckName).toContain(PackageName)
+        // expect(pckName).toContain(PackageName)
+        expect(pckName).to.contains(PackageName)
         console.log("Test Case Pass");
     })
 

@@ -1,3 +1,4 @@
+import { expect } from "chai"
 import { default as pathPage } from "./path.page.js"
 class loginPagePaths
 {
@@ -40,17 +41,21 @@ class loginPagePaths
     
     async adminLogin()
     {   
-        await this.adminLoginLink.waitForDisplayed()
+        
+        await browser.waitUntil(()=>this.adminLoginLink.isDisplayed())
+        // await this.adminLoginLink.waitForDisplayed() 
         await this.adminLoginLink.click()
         let loginTitle = await browser.getTitle()
-        await console.log("Title of the page is: "+loginTitle);
-        await expect(browser).toHaveTitleContaining("TMS | Admin Sign in")
+        console.log("Title of the page is: "+loginTitle);
+        //expect(browser).toHaveTitleContaining("TMS | Admin Sign in")
+        expect(loginTitle).to.equal("TMS | Admin Sign in") //-----> chai Assertion
         await this.adminName_txt.setValue(pathPage.allPaths.adminUsername)
         await this.adminPassword_txt.setValue(pathPage.allPaths.adminPassword)
         await this.loginButton.click()
         let adminTitle = await browser.getTitle()
-        await console.log("Title of the page is: "+adminTitle);
-        await expect(browser).toHaveTitleContaining("TMS | Admin Dashboard")
+        console.log("Title of the page is: "+adminTitle);
+        //expect(browser).toHaveTitleContaining("TMS | Admin Dashboard")
+        expect(adminTitle).to.equal("TMS | Admin Dashboard")
     }
 
     async userLogin()
@@ -63,7 +68,8 @@ class loginPagePaths
 
         let userLoginTitle = await browser.getTitle()
         console.log("Title of the page is: "+userLoginTitle);
-        expect(browser).toHaveTitleContaining("TMS | Package List")
+        //expect(browser).toHaveTitleContaining("TMS | Package List")
+        expect(userLoginTitle).to.equal("TMS | Package List")
     }
 }
 export default new loginPagePaths()

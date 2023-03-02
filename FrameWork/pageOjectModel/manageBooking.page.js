@@ -1,3 +1,5 @@
+import { expect } from "chai"
+
 class manageBooking
 {
     get manageBookingButton()
@@ -27,7 +29,8 @@ class manageBooking
         await this.confirmationNotificationText.waitForDisplayed()
         let title = await browser.getTitle()
         console.log("Title of the page is : "+title);
-        expect(browser).toHaveTitleContaining("TMS | Admin manage Bookings")
+        // expect(browser).toHaveTitleContaining("TMS | Admin manage Bookings")
+        expect(title).to.equal("TMS | Admin manage Bookings")
         console.log("Test Case Pass");
     }
     
