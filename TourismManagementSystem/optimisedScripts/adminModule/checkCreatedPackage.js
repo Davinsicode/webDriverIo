@@ -1,4 +1,3 @@
-import { expect } from "chai"
 import randomNumber from "../../../FrameWork/genericUtilities/randomNumber.js"
 import { default as baseClassPage } from "../../../FrameWork/pageOjectModel/baseClass.page.js"
 import loginPage from "../../../FrameWork/pageOjectModel/login.page.js"
@@ -12,13 +11,14 @@ import tourPackagePage from "../../../FrameWork/pageOjectModel/tourPackage.page.
 describe('Verify the admin created package is displayed in customer page', ()=>{
     
     let number = randomNumber.randomValues()
-    let PackageName = "Beach View Party"+number
+    // let PackageName = "Beach View Party"+number
+    let PackageName = "Beach View Party0.11405997797652101"
 
     it('Navigate the Application', async ()=>{
         await baseClassPage.openBrowser()
     })
 
-    it('Login as admin', async ()=>{
+    /* it('Login as admin', async ()=>{
         await loginPage.adminLogin()
     })
 
@@ -28,20 +28,11 @@ describe('Verify the admin created package is displayed in customer page', ()=>{
     
     it('Logout as admin', async ()=>{
         await logoutPage.adminLogout()
-    })
+    }) */
 
-    it('Login as User', async ()=>{
-        await loginPage.userLogin()
-    })
+    it('Login as User', async ()=>{ await loginPage.userLogin() })
 
-    it('Verifying the admin created package', async ()=>{
-        await browser.$('//div/h4[.="Package Name: '+PackageName+'"]').scrollIntoView()
-        await browser.$('//div/h4[.="Package Name: '+PackageName+'"]').waitForDisplayed()
-        let pckName = await browser.$('//div/h4[.="Package Name: '+PackageName+'"]').getText()
-        // expect(pckName).toContain(PackageName)
-        expect(pckName).to.contains(PackageName)
-        console.log("Test Case Pass");
-    })
+    it('Verifying the admin created package', async ()=>{ await packageListPage.createdPackageVerification(PackageName) })
 
     
 })

@@ -27,8 +27,12 @@ export const config = {
     // will be called from there.
     //
     specs: [
-        './test/specs/**/*.js'
+        //'./test/specs/**/*.js'
+        './TourismManagementSystem/**/**/*.js' 
     ],
+    suites:{
+        smoke:['./TourismManagementSystem/optimisedScripts/adminModule/createPackage.js','./TourismManagementSystem/optimisedScripts/adminModule/checkCreatedPackage.js']
+    },
     // Patterns to exclude.
     exclude: [
         // 'path/to/excluded/files'
@@ -55,26 +59,34 @@ export const config = {
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
     // https://saucelabs.com/platform/platform-configurator
     //
-    capabilities: [{
+    capabilities: [
+        // Chrome Instance
+        {   // maxInstances can get overwritten per capability. So if you have an in-house Selenium
+            // grid with only 5 firefox instances available you can make sure that not more than
+            // 5 instances get started at a time.
+        
+            maxInstances: 5,
+            browserName: 'chrome',
+            acceptInsecureCerts: true,    
     
-        // maxInstances can get overwritten per capability. So if you have an in-house Selenium
-        // grid with only 5 firefox instances available you can make sure that not more than
-        // 5 instances get started at a time.
-        maxInstances: 5,
-        //
-        browserName: 'chrome',
-        acceptInsecureCerts: true,    
-    'goog:chromeOptions': {
-                prefs: {
-                  // 0 - Default, 1 - Allow, 2 - Block
-                  'profile.managed_default_content_settings.notifications': 1
-                }
+            'goog:chromeOptions': {
+                                    prefs: {
+                                    // 0 - Default, 1 - Allow, 2 - Block
+                                    'profile.managed_default_content_settings.notifications': 1
+                                            }
               }
-        // If outputDir is provided WebdriverIO can capture driver session logs
-        // it is possible to configure which logTypes to include/exclude.
-        // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
-        // excludeDriverLogs: ['bugreport', 'server'],
-    }],
+            // If outputDir is provided WebdriverIO can capture driver session logs
+            // it is possible to configure which logTypes to include/exclude.
+            // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
+            // excludeDriverLogs: ['bugreport', 'server'],
+        },
+        // Fire Fox Instance
+        /* {
+            maxInstances: 5,
+            browserName: 'firefox',
+            acceptInsecureCerts: true
+        } */
+        ],
     //
     // ===================
     // Test Configurations
@@ -123,7 +135,7 @@ export const config = {
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    services: ['chromedriver'],
+    services: ['selenium-standalone'],
     
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber

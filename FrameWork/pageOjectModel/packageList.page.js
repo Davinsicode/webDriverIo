@@ -4,7 +4,8 @@ class packageList
 {
     get packageNameText()
     {
-        return $(`//h4[.='Package Name: Kerla']`)
+        return $(`//h4[contains(.,'${this.packageName}')]`)
+        ////h4[.='Package Name: Kerla']
     }
     get clickPackage()
     {
@@ -24,7 +25,8 @@ class packageList
     }
     get fromDate()
     {
-        return $(`//td[@data-month="2"][@ data-year="2023"]/a[.='2']`)
+        return $(`//td[@data-month='${this.month}'][@ data-year="2023"]/a[.='${this.date}']`)
+        //td[@data-month="2"][@ data-year="2023"]/a[.='2']
     }
     get tooDate()
     {
@@ -50,17 +52,25 @@ class packageList
     {
         return $(`//div[@class="succWrap"]`)
     }
+    get packageLink()
+ {
+    return $(`//h4[contains(.,'${this.PackageName}')]`)
+    //h4[contains(.,'Beach View Party0.11405997797652101')]
+ }
     
-    async selectPackage()
+    async selectPackage(packageName)
     {
+        this.packageName = packageName
         await this.packageNameText.scrollIntoView()
         await this.packageNameText.waitForDisplayed()
         await this.clickPackage.click()
         console.log("Pack clicked successfully");
     }
         
-    async bookTicket()
+    async bookTicket(month, date)
     {
+        this.month = month
+        this.date = date
         await this.safeSecureText.waitForDisplayed()
         await browser.scroll(300,300)
         await this.datePicker1_txt.click()
@@ -88,6 +98,19 @@ class packageList
         
         
     }
+
+    async createdPackageVerification(packname)
+ {
+    this.PackageName = packname
+    await this.packageLink.scrollIntoView()
+    await this.packageLink.waitForDisplayed()
+    let pckName = await this.packageLink.getText()
+    console.log("---------------->"+packname);
+    console.log("Created Package Name is: "+pckName);
+    expect(pckName).to.contains(packname)
+    console.log("TestCase Pass");
+    
+ }
 }
 
 export default new packageList()
