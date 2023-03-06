@@ -16,7 +16,7 @@ describe('Book the Ticket and confirm the ticket', ()=>{
         await baseClassPage.openBrowser()
     })
 
-    it('Login as User', async ()=>{
+    /* it('Login as User', async ()=>{
     await loginPage.userLogin()
     })
 
@@ -30,15 +30,15 @@ describe('Book the Ticket and confirm the ticket', ()=>{
 
     it('Logout as user', async ()=>{
         await logoutPage.userLogout()
-    })
+    }) */
 
-    /* it('Login as admin', async ()=>{
+    it('Login as admin', async ()=>{
         await loginPage.adminLogin();
-    }) */
+    }) 
 
-    /* it('Confirm Booking', async ()=>{
+    it('Confirm Booking', async ()=>{
         await manageBookingPage.confirmBooking(packageName, bookingDate)
-    }) */
+    })
 
     /* it('Cancel the Booking', async ()=>{
         

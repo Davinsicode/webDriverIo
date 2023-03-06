@@ -24,8 +24,8 @@ class manageBooking
     }
     get confirmationNotificationText()
     {
-        // return $(`//div[contains(.,':Booking Confirm successfully ')]/strong`)
-        return $(`//div[contains(.,':Booking Cancelled successfully')]/strong`)
+        return $(`//div[contains(.,':Booking Confirm successfully ')]/strong`)
+        
          
     }
     get cancelNotification()
@@ -42,12 +42,12 @@ class manageBooking
         let confirmlinks = await this.confirmLink
         for (let index = 0; index < confirmlinks.length; index++) 
         {
-            await confirmlinks[0].scrollIntoView()
-            await confirmlinks[0].waitForClickable()
-            await confirmlinks[0].click()
+            await confirmlinks[index].scrollIntoView()
+            await confirmlinks[index].waitForClickable()
+            await confirmlinks[index].click()
             await browser.acceptAlert() 
             await this.confirmationNotificationText.waitForDisplayed()
-            
+            await browser.pause(5000)
         }
         
     }
@@ -61,11 +61,11 @@ class manageBooking
         let cancellinks = await this.cancelLink
         for (let index = 0; index < cancellinks.length; index++) 
         {
-            await cancellinks[0].scrollIntoView()
+            await cancellinks[index].scrollIntoView()
             console.log("Scrolling");
-            await cancellinks[0].waitForClickable()
+            await cancellinks[index].waitForClickable()
             console.log("Waitinf for click");
-            await cancellinks[0].click()
+            await cancellinks[index].click()
             console.log("Cancel the package");
             await browser.pause(5000)
             console.log("going to handle the alert popup");

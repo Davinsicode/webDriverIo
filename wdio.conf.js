@@ -61,7 +61,7 @@ export const config = {
     //
     capabilities: [
         // Chrome Instance
-        {   // maxInstances can get overwritten per capability. So if you have an in-house Selenium
+        /* {   // maxInstances can get overwritten per capability. So if you have an in-house Selenium
             // grid with only 5 firefox instances available you can make sure that not more than
             // 5 instances get started at a time.
         
@@ -79,13 +79,13 @@ export const config = {
             // it is possible to configure which logTypes to include/exclude.
             // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
             // excludeDriverLogs: ['bugreport', 'server'],
-        },
+        }, */
         // Fire Fox Instance
-        /* {
+        {
             maxInstances: 5,
             browserName: 'firefox',
             acceptInsecureCerts: true
-        } */
+        }
         ],
     //
     // ===================
@@ -112,7 +112,7 @@ export const config = {
     //
     // If you only want to run your tests until a specific amount of tests have failed use
     // bail (default is 0 - don't bail, run all tests).
-    bail: 0,
+    bail: 1,
     //
     // Set a base URL in order to shorten url command calls. If your `url` parameter starts
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
@@ -161,7 +161,11 @@ export const config = {
 
 
     
-    //
+    reporters: [['allure', {
+        outputDir: 'allure-results',
+        disableWebdriverStepsReporting: true,
+        disableWebdriverScreenshotsReporting: false,
+    }]],
     // Options to be passed to Mocha.
     // See the full list at http://mochajs.org/
     mochaOpts: {
